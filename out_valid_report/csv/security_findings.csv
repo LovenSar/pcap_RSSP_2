@@ -1,0 +1,7 @@
+severity,code,message,count
+high,anti_replay_replay,"检测到 anti-replay 违规: replay (SPI=18868758, SEQ=18154721335287856658)",1
+high,anti_replay_too_old,"检测到 anti-replay 违规: too_old (SPI=126431241, SEQ=1618199843669534792)",1
+warning,seq_backward,序列号回退 (SPI=126431241): 1618251393231203702 -> 1618199843669534792,1
+warning,spi_inconsistent_endpoint,同一 SPI 绑定多个端点，疑似复用/重放或配置问题 (SPI=126431241),1
+warning,timestamp_high_latency,TTS RTT 过高 739495406s (SPI=4194304),4
+warning,timestamp_negative_rtt,TTS 计算得到负 RTT (SPI=57999360),6

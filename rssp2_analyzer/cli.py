@@ -10,6 +10,7 @@ from .pcap_reader import iter_pdus
 from .stats import analyze_stats
 from .security import analyze_security
 from .report import render_markdown
+from .csv_report import generate_csv_reports
 
 
 def main(argv: List[str] | None = None) -> int:
@@ -44,5 +45,10 @@ def main(argv: List[str] | None = None) -> int:
     with open(out_md, "w", encoding="utf-8") as f:
         f.write(report_md)
 
+    # 生成 CSV 报告
+    csv_dir = os.path.join(args.output, "csv")
+    csv_files = generate_csv_reports(records, stats, sec, cfg, csv_dir)
+
     print(f"报告已生成: {out_md}")
+    print(f"CSV 已生成: {len(csv_files)} 个文件，目录: {csv_dir}")
     return 0

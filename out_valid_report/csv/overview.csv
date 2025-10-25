@@ -1,0 +1,4 @@
+metric,value
+total_packets,25
+parsed_pdus,10
+parse_errors,15

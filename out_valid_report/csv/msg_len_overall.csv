@@ -1,0 +1,7 @@
+metric,value
+count,10.0
+p50,237.0
+p95,847.0
+min,26.0
+max,847.0
+avg,258.3

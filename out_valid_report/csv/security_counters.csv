@@ -1,0 +1,11 @@
+counter,count
+bad_ip_checksum,0
+bad_udp_checksum,0
+ip_total_length_mismatch,0
+mac_mismatch,0
+replay,1
+seq_jump,0
+spi_inconsistent_endpoint,1
+timestamp_anomaly,0
+too_old,1
+udp_length_mismatch,0
