@@ -1,0 +1,46 @@
+{
+  "transport": "any",
+  "ports": [],
+  "schema": {
+    "protocol_id_len": 2,
+    "protocol_id_values": [21042],
+    "msg_type_len": 1,
+    "msg_type_values": [1],
+    "spi_len": 4,
+    "seq_len": 8,
+    "timestamp": {
+      "enabled": true,
+      "len": 12,
+      "layout": "TTS"
+    },
+    "length_field": {
+      "enabled": false,
+      "offset": 0,
+      "size": 2,
+      "endian": "big"
+    },
+    "opts_len_size": 1,
+    "data_len_size": 2,
+    "mac_len": 16
+  },
+  "security": {
+    "anti_replay_window": 64,
+    "max_seq_jump": 1000000,
+    "timestamp_checks": {
+      "enabled": true,
+      "max_skew_seconds": 5.0,
+      "max_latency_seconds": 3.0
+    },
+    "mac_verification": {
+      "enabled": true,
+      "algorithm": "HMAC-SHA256",
+      "key_hex": "00112233445566778899aabbccddeeff"
+    }
+  },
+  "report": {
+    "include_charts": false,
+    "timezone": "local",
+    "rtt_detection_window_seconds": 2.0,
+    "hourly_group": true
+  }
+}

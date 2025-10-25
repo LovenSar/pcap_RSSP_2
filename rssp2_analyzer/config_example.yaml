@@ -1,0 +1,40 @@
+# RSSP-II 分析示例配置
+# 可以按需修改并使用 --config 指定
+
+transport: any  # any|udp|tcp
+ports: []       # 示例: [30000, 30001]
+
+schema:
+  protocol_id_len: 2
+  protocol_id_values: []  # 示例: [21075]  # 大端整数值列表，可为空表示不检查
+  msg_type_len: 1
+  spi_len: 4
+  seq_len: 8
+  timestamp:
+    enabled: true
+    len: 12           # 例如 TTS 三个 4 字节时间戳（t1,t2,t3）
+    layout: TTS       # TTS|RAW; TTS 将尝试解析为 t1,t2,t3（大端无符号）
+  length_field:
+    enabled: false
+    offset: 0
+    size: 2
+    endian: big       # big|little
+  mac_len: 16         # 典型 8/16 字节
+
+security:
+  anti_replay_window: 64
+  max_seq_jump: 1000000   # 超过该跳变记为可疑
+  timestamp_checks:
+    enabled: true
+    max_skew_seconds: 5.0
+    max_latency_seconds: 3.0
+  mac_verification:
+    enabled: false
+    algorithm: AES-CMAC    # AES-CMAC|HMAC-SHA256
+    key_hex: ""           # 若启用请配置 16/32 字节密钥
+
+report:
+  include_charts: true
+  timezone: local          # local|UTC
+  rtt_detection_window_seconds: 2.0
+  hourly_group: true
